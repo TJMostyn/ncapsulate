@@ -1,0 +1,51 @@
+{
+    "API_KEY": "zSHT0viT6ToU4hGWd5Qe9g",
+    "API_KEY_SECRET": "GRgM3EaMyXiPKY6DSSxCrRlonOOnO5ffhL6gExXN14",
+    "APP_AUTH_TOKEN": "1433419604-OJDGJWuIb7RqgWWgNCOkqyKFpJnssb63k18zgd9",
+    "APP_AUTH_TOKEN_SECRET": "JCf0QVtWl5RCUohrYDTG8ihhcvAvSApuhgHiiiO8M",
+    "API_OAUTH_URL_ROOT": "https://api.twitter.com/oauth/",
+    "PROXY_OAUTH_URL_ROOT": "http://localhost/twitter-api/oauth/",
+    "API_SEARCH_URL_ROOT": "https://api.twitter.com/1.1/search/tweets.json",
+    "PROXY_SEARCH_URL_ROOT": "http://localhost/twitter-api/1.1/search/tweets.json",
+    "API_TREND_URL_ROOT": "https://api.twitter.com/1.1/trends/place.json",
+    "PROXY_TREND_URL_ROOT": "http://localhost/twitter-api/1.1/trends/place.json",
+    "API_VERSION": "1.0",
+    "OAUTH_SIGNATURE_METHOD": "HMAC-SHA1",
+    "OAUTH_API_CALLBACK": "http://localhost/ncapsulate/#/authenticated",
+    "DEFAULT_TREND_LOCATION_ID": 1,
+    "MAXIMUM_TWEET_PAGE_COLLECTION": 20,
+    
+    "MINIMUM_SUMMARY_POST_LENGTH": 30,
+    "POST_SIMILARITY_THRESHOLD": 0.6,
+    "MAX_NO_PRIMARY_NODES": 5,
+    "MAX_NO_SECONDARY_NODES": 7,
+    "MAX_NO_TERTIARY_NODES": 7,
+    
+    "VS_BACKGROUND_COLOR": "#1E1F2F",
+    "VS_PRIMARY_NODE_INNER_COLOUR": "#000000",
+    "VS_PRIMARY_NODE_OUTER_COLOUR": "#9F86FF",
+    "VS_SECONDARY_NODE_INNER_COLOUR": "#000000",
+    "VS_SECONDARY_NODE_OUTER_COLOUR": "#67699F",
+    "VS_TERTIARY_NODE_INNER_COLOUR": "#000000",
+    "VS_TERTIARY_NODE_OUTER_COLOUR": "#FF9999",
+    "VS_CONNECT_LINE_COLOUR": "#373957",
+    "VS_NODE_TEXT_COLOUR": "#E8E8E8",
+    "VS_POSTER_NODE_OUTER_COLOUR": "#282840",
+    "VS_POSTER_NODE_INNER_COLOUR": "#007AE1",
+    "VS_POSTER_LINE_COLOUR": "#373957",
+    "VS_POSTER_TEXT_COLOUR": "#F8F8F8",
+    "VS_EXCLUDE_MESH_OUTER_COLOUR" : "#9F86FF",
+    "VS_EXCLUDE_MESH_INNER_COLOUR" : "#FF9999",
+    "VS_EXCLUDE_MOUSEOVER_MESH_COLOUR" : "#FFFFFF",
+    
+    "CHART_TEXT_COLOR": "#A3ABBC",
+    "CHART_LINE_COLOR": "#323250",
+    "CHART_FILL_COLOR": ["#9F86FF","#007AE1","#1CA8DD", "#9F86FF","#007AE1","#1CA8DD"],
+    "LOCATION_CHART_NO_RESULTS": 5,
+    
+    "TAXONOMIES": [
+        { "name": "Major topics", "file": "majortopics.txn" }
+    ],
+    
+    "TESTING_MODE": true
+}

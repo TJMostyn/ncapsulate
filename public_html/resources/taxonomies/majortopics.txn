@@ -1,0 +1,22 @@
+[
+    {
+        "class": "Politics",
+        "individuals": ["government", "parliament", "politics", "law", "state", "ruling"]
+    },
+    {
+        "class": "Sport",
+        "individuals": ["football", "rugby", "cricket", "game", "referee", "athletics", "exercise"]
+    },
+    {
+        "class": "Economy",
+        "individuals": ["economy", "economics", "money", "interest", "rates", "rachel"]
+    },
+    {
+        "class": "Technology",
+        "individuals": ["computer", "software", "tech", "technology", "phone", "tablet"]
+    },
+    {
+        "class": "Arts",
+        "individuals": ["art", "painting", "design", "painter", "artist"]
+    }
+]

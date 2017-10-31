@@ -1,0 +1,16 @@
+<div ng-app="analyticsApp" ng-controller="AnalyticsController as analyticsController">
+    <div id="search-info-display" ng-init="searchController.loadTwitterTrends()">
+        <div class="section-title">Search and discover...</div>
+        <div>
+            <input ng-model="searchController.query" id="main-search-input" type="text" 
+                ng-keyup="$event.keyCode === 13 && searchController.submitSearch()"
+                placeholder="Enter search terms" />
+            <button ng-click="searchController.submitSearch()">Search</button>
+        </div>
+        <div id="trending-searches">
+            <span ng-repeat="trend in trends" ng-click="searchController.submitTrendSearch(trend)">
+                {{trend}}
+            </span>
+        </div>
+    </div>
+</div>

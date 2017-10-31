@@ -1,0 +1,106 @@
+<div ng-app="analyticsApp" ng-controller="AnalyticsController as analyticsController">
+    
+    <!-- Primary visual search canvas -->
+    <canvas id="vs-canvas"></canvas>
+
+    <!-- Query navigation element -->
+    <div id="query-navigation">
+        <span ng-repeat="query in queryStack" ng-click="searchController.selectNavigation(query)" 
+            class="query-navigation-element">
+            {{query}}
+        </span>
+    </div>
+
+    <div ng-app="analyticsApp" ng-controller="ChartRenderer as chartRenderer">
+
+        <!-- Left hand charts -->
+        <div id="chart-container" ng-hide="hideCharts">
+
+            <!-- Taxonomy selection section -->
+            <div class="chart-canvas-container">
+                <div class="section-title">Overlay topics</div>
+                <div id="taxonomy-selection">
+                    <select ng-model="selectedTaxonomy" ng-init="selectedTaxonomy = taxonomies[0]" 
+                        ng-options="taxonomy.name for taxonomy in taxonomies"></select>
+                    <button ng-click="analyticsController.taxonomySelected()">Show</button>
+                </div>
+            </div>
+
+            <div class="chart-canvas-container">
+                <div class="section-title">Tweet volume by day</div>
+                <canvas id="volume-chart-canvas"
+                    class="chart chart-line ncapsulate-chart" 
+                    chart-options="optionsVolume" 
+                    chart-dataset-override="datasetVolume"
+                    chart-data="dataVolume" 
+                    chart-labels="labelsVolume" 
+                    chart-series="seriesVolume"></canvas>
+            </div>
+            <div class="chart-canvas-container">
+                <div class="section-title">Tweet locations</div>
+                <canvas id="location-chart-canvas"
+                    class="chart chart-horizontal-bar ncapsulate-chart" 
+                    chart-options="optionsLocation"
+                    chart-data="dataLocation" 
+                    chart-labels="labelsLocation"></canvas>
+            </div>
+            <div class="chart-canvas-container">
+                <div class="section-title">Tweet sentiment share</div>
+                <canvas id="sentiment-chart-canvas"
+                    class="chart chart-doughnut ncapsulate-chart" 
+                    chart-options="optionsSentiment"
+                    chart-data="dataSentiment" 
+                    chart-labels="labelsSentiment"
+                    chart-colors="coloursSentiment"></canvas>
+            </div>
+        </div>
+
+        <!-- Taxonomy results chart -->
+        <div ng-hide="hideTaxonomyChart" id="taxonomy-chart-canvas-container">
+            <div id="taxonomy-title">
+                <span class="section-title">{{taxonomyTitle}}</span>
+                <img src="images/close_button.png" id="taxonomy-close-btn" 
+                    ng-click="chartRenderer.hideTaxonomyChartAndPosts()" />
+            </div>
+            <canvas id="taxonomy-chart-canvas" width="600" height="400" 
+                class="chart chart-horizontal-bar" 
+                chart-options="optionsTaxonomy"
+                chart-data="dataTaxonomy" 
+                chart-labels="labelsTaxonomy"></canvas>
+        </div>
+
+        <!-- Photo bar -->
+        <div id="photo-container" ng-hide="hidePhotos" ng-class="{'maximisedPhotos' : photosMaximised}">
+            <div class="section-title">Photos</div>
+            <div ng-click="photosMaximised = !photosMaximised" class="photo-button">
+                {{(photosMaximised) ? 'Show less' : 'Show more'}}
+            </div>
+            <img ng-repeat="photo in photos" class="post-photo" src="{{photo.url}}" 
+                fallback-src="images/image_not_found.jpg" 
+                ng-class="{'maximisedPhoto' : photosMaximised}" />
+        </div>
+    </div>
+
+    <!-- Tweet list (on-click) -->
+    <div id="tweet-container" ng-hide="hidePosts" ng-class="tweetPanelClass">
+        <div id="tweet-navigation">
+            <span class="section-title">Posts</span>
+            <img src="images/close_button.png" ng-click="analyticsController.clearPosts()" />
+        </div>
+        <table>
+            <tr ng-repeat="post in posts" class="tweets-container">
+                <td class="tweet-image">
+                    <img src="{{post._profileImage}}" alt="{{post._poster}}"
+                        fallback-src="images/image_not_found.jpg" />
+                </td>
+                <td class="tweet-description">
+                    <div class="tweet-title">
+                        <span class="tweet-name">{{post._poster}} ({{post._noFollowers}})</span>
+                        <span class="tweet-date">{{post._createdAt|postDateFilter}}</span>
+                    </div>
+                    <div class="tweet-text">{{post._originalText}}</div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

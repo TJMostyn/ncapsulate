@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>       
+        <title>NCapsulate: Twitter at a glance</title>
+        <link rel="stylesheet" type="text/css" href="css/default.css"/>
+        <meta charset="UTF-8"/>
+        <script type="text/javascript" src="js/libs/Chart.min.js"></script>
+        <script type="text/javascript" src="js/libs/angular.min.js"></script>
+        <script type="text/javascript" src="js/libs/angular-route.min.js"></script>
+        <script type="text/javascript" src="js/libs/angular-chart.js"></script>
+        <script type="text/javascript" src="js/libs/sha-encrypt.js"></script>
+        <script type="text/javascript" src="js/libs/math.js"></script>
+        <script type="text/javascript" src="js/libs/babylon.2.4.js"></script>
+        <script type="text/javascript" src="js/resources.js"></script>
+        <script type="text/javascript" src="js/utilities.js"></script>
+        <script type="text/javascript" src="js/analytics.js"></script>
+        <script type="text/javascript" src="js/charts.js"></script>
+        <script type="text/javascript" src="js/visualsearch.js"></script>
+        <script type="text/javascript" src="js/authenticate.js"></script>
+        <script type="text/javascript" src="js/ncapsulate.js"></script>
+        <script type="text/javascript" src="js/search.js"></script>
+    </head>
+    <body>
+        <div ng-app="ncapsulateApp">
+            <div ng-controller="SearchController as searchController">
+                <div ng-controller="NCapsulateController as nCapsulateController">
+                    <div id="error-alert" class="{{errorClass}}">
+                        <div>Sorry! An error has occurred:</div>
+                        <div id="error-details">Details: {{errorDetails}}</div>
+                    </div>
+                    <div id="info-alert" class="{{infoClass}}">
+                        <div id="info-details">{{infoDetails}}</div>
+                    </div>
+                </div>
+
+                <div id="top-container">
+                    <div id="app-logo">
+                        <img src="images/ncapsulate-logo.jpg" alt="Ncapsulate logo" />
+                        <h1>Encapsulate</h1>
+                    </div>
+
+                    <div id="search-form">
+                        <input ng-model="searchController.query" id="search-input" type="text" 
+                            ng-keyup="$event.keyCode === 13 && searchController.submitSearch()"
+                            placeholder="Enter search terms" />
+                        <button ng-click="searchController.submitSearch()">Search</button>
+                    </div>
+
+                    <div id="logout-form" ng-app="authenticateApp" 
+                        ng-controller="LoginController as loginController">
+                        <button ng-click="loginController.logout()" class="log-out">Log Out</button>
+                    </div>
+                </div>
+
+                <div id="content-container" ng-view></div>
+    
+                <!-- Search loading bar -->
+                <div id="data-collection-bar" ng-show="showLoading">
+                    <div class="section-title">Collecting tweets: progress = {{collectionPercentage}}%</div>
+                    <div id="data-loading-bar"><span style="width: {{collectionPercentage}}%;"></span></div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
